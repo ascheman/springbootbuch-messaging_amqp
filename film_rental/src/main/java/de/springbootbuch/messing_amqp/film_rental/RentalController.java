@@ -32,9 +32,9 @@ public class RentalController {
 	
 	private final AmqpTemplate amqpTemplate;
 
-	public RentalController(InventoryRepository inventoryRepository, AmqpTemplate amqpTemplate1) {
+	public RentalController(InventoryRepository inventoryRepository, AmqpTemplate amqpTemplate) {
 		this.inventoryRepository = inventoryRepository;
-		this.amqpTemplate = amqpTemplate1;
+		this.amqpTemplate = amqpTemplate;
 	}
 
 	@PostMapping("/returnedFilms")
