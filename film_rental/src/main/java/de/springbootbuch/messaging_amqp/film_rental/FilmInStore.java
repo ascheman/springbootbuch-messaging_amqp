@@ -1,4 +1,4 @@
-package de.springbootbuch.messing_amqp.film_rental;
+package de.springbootbuch.messaging_amqp.film_rental;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package de.springbootbuch.messing_amqp.film_rental;
+package de.springbootbuch.messaging_amqp.film_rental;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
