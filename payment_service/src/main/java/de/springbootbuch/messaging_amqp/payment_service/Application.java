@@ -93,7 +93,6 @@ public class Application {
 			rv.setMessageListener(filmReturnedEventListener);
 			rv.setQueueNames("returned-films-events");
 			
-			
 			registrar.registerEndpoint(rv);
 		};
 	}
