@@ -54,7 +54,7 @@ public class Application {
 	) {
 		final Map<String, Class<?>> t 
 			= new HashMap<>();
-		t.put("de.springbootbuch.messing_amqp.film_rental.FilmReturnedEvent", 
+		t.put("de.springbootbuch.messaging_amqp.film_rental.FilmReturnedEvent", 
 			FilmReturnedEvent.class);
 		
 		final DefaultJackson2JavaTypeMapper typeMapper
