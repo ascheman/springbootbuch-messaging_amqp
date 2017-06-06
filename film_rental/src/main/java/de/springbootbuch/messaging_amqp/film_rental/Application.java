@@ -27,6 +27,6 @@ public class Application {
 	
 	@Bean
 	Queue returnFilmEventsQueue() {
-		return new Queue("returned-films-events", true);
+		return new Queue("returned-film-events", true);
 	}
 }

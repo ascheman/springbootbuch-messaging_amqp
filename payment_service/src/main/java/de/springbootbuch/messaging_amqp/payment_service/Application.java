@@ -45,7 +45,7 @@ public class Application {
 	
 	@Bean
 	Queue returnFilmEventsQueue() {
-		return new Queue("returned-films-events", true);
+		return new Queue("returned-film-events", true);
 	}
 
 	@Bean
@@ -89,9 +89,9 @@ public class Application {
 		return registrar -> {
 			final SimpleRabbitListenerEndpoint rv
 				= new SimpleRabbitListenerEndpoint();
-			rv.setId("returned-films-receiver");
+			rv.setId("returned-film-events-receiver");
 			rv.setMessageListener(filmReturnedEventListener);
-			rv.setQueueNames("returned-films-events");
+			rv.setQueueNames("returned-film-events");
 			
 			registrar.registerEndpoint(rv);
 		};

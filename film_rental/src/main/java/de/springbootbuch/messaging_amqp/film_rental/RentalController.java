@@ -46,7 +46,7 @@ public class RentalController {
 				.save(new FilmInStore(returnedFilm.getTitle()));
 
 		amqpTemplate.convertAndSend(
-			"returned-films-events", 
+			"returned-film-events", 
 			new FilmReturnedEvent(
 				filmInStore.getId(), 
 				filmInStore.getTitle()
