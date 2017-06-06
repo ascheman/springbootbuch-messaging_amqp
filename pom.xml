@@ -94,7 +94,7 @@
 											<alias>rabbitmq</alias>
 											<run>
 												<ports>
-													<port>rabbitmq-it.port:5672:</port>
+													<port>rabbitmq-it.port:5672</port>
 												</ports>
 											</run>
 										</image>
