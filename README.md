@@ -6,6 +6,9 @@ This project needs a local RabbitMQ instance. If you don't have one, you can sta
 ./mvnw docker:run
 ```
 
+It is running [https://hub.docker.com/_/rabbitmq/]() and you can log into the console
+on [http://localhost:15672]() with credentials `guest` / `guest` for monitoring or administration of the broker.
+
 ## Complex scenario
 
 Start the modules `film_rental` and `payment` via
