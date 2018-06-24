@@ -8,7 +8,7 @@ This project needs a local RabbitMQ instance. If you don't have one, you can sta
 
 ## Complex scenario
 
-Start the moduls `film_rental` and `payment` via 
+Start the modules `film_rental` and `payment` via
 
 ```
 cd film_rental
