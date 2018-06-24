@@ -13,6 +13,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<properties>
+		<docker-maven-plugin.wait.time>30000</docker-maven-plugin.wait.time>
+	</properties>
+
 	<name>messaging_amqp</name>
 
 	<modules>
@@ -59,6 +63,7 @@
 									<port>15672:15672</port>
 								</ports>
 								<wait>
+									<time>${docker-maven-plugin.wait.time}</time>
 									<log>Server startup complete;</log>
 								</wait>
 							</run>
