@@ -22,6 +22,29 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-json</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>${project.groupId}</groupId>-->
+			<!--<artifactId>film_rental</artifactId>-->
+			<!--<classifier>stubs</classifier>-->
+			<!--<version>${project.version}</version>-->
+			<!--<scope>test</scope>-->
+			<!--<exclusions>-->
+				<!--<exclusion>-->
+					<!--<groupId>*</groupId>-->
+					<!--<artifactId>*</artifactId>-->
+				<!--</exclusion>-->
+			<!--</exclusions>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
@@ -32,6 +55,31 @@
 				<artifactId>
 					spring-boot-maven-plugin
 				</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
+				<version>2.0.0.RELEASE</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generateTests</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<baseClassForTests>de.springbootbuch.messaging_amqp.payment_service.MessagingTestBase</baseClassForTests>
+					<contractsMode>LOCAL</contractsMode>
+					<contractDependency>
+						<groupId>${project.groupId}</groupId>
+						<artifactId>film_rental</artifactId>
+						<classifier>stubs</classifier>
+						<version>${project.version}</version>
+					</contractDependency>
+					<contractsPath>${project.groupId}/.*/${project.artifactId}</contractsPath>
+					<deleteStubsAfterTest>false</deleteStubsAfterTest>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

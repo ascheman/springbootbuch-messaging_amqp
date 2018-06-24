@@ -31,17 +31,70 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>-->
+            <!--<scope>test</scope>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-stream-rabbit</artifactId>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>stub</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<inherited>false</inherited>
+						<configuration>
+							<attach>true</attach>
+							<descriptors>
+								${basedir}/src/assembly/stubs.xml
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>
 					spring-boot-maven-plugin
 				</artifactId>
 			</plugin>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
+				<version>2.0.0.RELEASE</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<goals>
+                            <goal>generateTests</goal>
+							<goal>generateStubs</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<baseClassForTests>de.springbootbuch.messaging.amqp.film_rental.MessagingTestBase</baseClassForTests>
+				</configuration>
+            </plugin>
 		</plugins>
 	</build>
 </project>

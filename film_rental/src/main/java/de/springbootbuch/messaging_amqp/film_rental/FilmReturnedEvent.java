@@ -12,8 +12,12 @@ public class FilmReturnedEvent implements Serializable {
 
 	private static final long serialVersionUID = -1174938991379385169L;
 	
-	private final Integer inventoryId;
-	private final String title;
+	private Integer inventoryId = null;
+	private String title = null;
+
+	public FilmReturnedEvent () {
+
+	}
 
 	public FilmReturnedEvent(
 		Integer inventoryId, String title
